@@ -54,7 +54,7 @@ var $grid = $('<div>') //grid div
 
 
 var $pin = $('<button>') //button
-	.text('grid')
+	.text('|||')
 	.addClass('js-gridly-btn')
 	.css({
 		'position': 'absolute',
@@ -62,6 +62,7 @@ var $pin = $('<button>') //button
 		'border': '1px red solid',
 		'font-size': '9px',
 		'background': 'pink',
+		'line-height': '1',
 		'z-index': 999999999999,
 	});
 
