@@ -54,7 +54,7 @@ var $grid = $('<div>') //grid div
 
 
 var $pin = $('<button>') //button
-	.text('|||')
+	.text('grid') // overwritten by full target container classname
 	.addClass('js-gridly-btn')
 	.css({
 		'position': 'absolute',
@@ -89,12 +89,13 @@ else { //add
 	if(DEBUG) console.log('%cGridly created!', 'color:green;font-size:20px;');
 
 	var i = 0;
-	$('.container, .container-fluid, .row').each(function() {
+	$('.container, .container-fluid').each(function() {
 		var $this = $(this);
 		var left = parseInt($this.offset().left) + parseInt($this.css('paddingLeft')) || 0; //get sizes and position
 		var width = parseInt($this.width()) || 0;
 		var top = parseInt($this.offset().top) + parseInt($this.css('paddingTop')) || 0;
 		var height = parseInt($this.height()) || 0;
+		var text = $this.attr('class');
 
 		if(height > 0 && width > 0) { //exclude all grids not visible
 
@@ -105,8 +106,9 @@ else { //add
 					.css({
 						'left': left,
 						'width': width,
-						'top': top,
-						'height': height,
+						'top': '0px',
+						'height': '100%',
+						'bottom': '0px',
 					})
 					.attr('data-id', i)
 
@@ -116,6 +118,7 @@ else { //add
 					$pin
 						.clone()
 						.attr('data-id', i)
+						.text(text)
 						.css({
 							'left': left,
 							'top': top,
